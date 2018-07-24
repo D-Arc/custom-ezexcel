@@ -19,5 +19,7 @@ public class CustomExcelBuilderImpl extends ExcelBuilderImpl implements CustomEx
         for (int i : colWidth.keySet()) {
             poiSheet.setColumnWidth(i, 252 * colWidth.get(i) + 323);
         }
+        //冻结第一行（head）
+        poiSheet.createFreezePane(0, 1, 0, 1);
     }
 }

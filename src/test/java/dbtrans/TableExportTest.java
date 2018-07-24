@@ -69,18 +69,19 @@ public class TableExportTest {
             // 行数据集合
             List<List<String>> data = getData(access, tabName, colNames);
             //sheet写入excel
+            //此处是自己添加的写入方法，可以通过传入map调整各个列宽
             writer.writerWidth(data, sheet, new HashMap<Integer, Integer>(){{put(1, 57);}});
         }
         writer.finish();
     }
 
     private static List<List<String>> getData(DbAccessOperation access, String tabName, List<String> colNames) {
-        //TODO:此处sql应加条件，而不是全查出来
         StringBuilder sql = new StringBuilder(128);
         sql.append("SELECT ");
         for (String col : colNames) {
             sql.append(col).append(",");
         }
+        //防止数据过于庞大，如果数据量可接受，则去掉where字句
         sql.deleteCharAt(sql.length() - 1).append(" FROM ").append(tabName).append(" WHERE ROWNUM < 100");
         System.out.println(sql.toString());
         return access.findModeResult(sql.toString(), null);

@@ -32,7 +32,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 生成Excel上下文
  * mod:
  * added prop alertCellStyle;
- * private CellStyle buildDefaultCellStyle() 添加右边线
+ * private CellStyle buildDefaultCellStyle() 添加右边线，设置cell内换行为true
  * private void buildTableStyle(TableStyle tableStyle) 可以加入alert样式
  *
  * @author jipengfei https://github.com/alibaba/easyexcel
